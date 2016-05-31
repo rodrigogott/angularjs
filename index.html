@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html ng-app="myApp"> 
+<head>
+	<title>Curso de AngularJS</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.css">
+
+	<script src="vendor/angularjs/angular.js"></script>
+	<script> 
+		angular.module('myApp', []).controller ('MeuController', function($scope) {
+			$scope.pessoa = [{
+				nome : 'Rodrigo',
+				email : 'rodrigo@gmail,'
+			},{
+				nome : 'Cleiton',
+				email : 'cleiton@gmail,'
+
+			}];
+			//mensagem
+			$scope.msg = 'isso é visivel!';
+
+			//funcao de mostrar
+			$scope.mostrarFn = function (){
+				$scope.mostrar = !$scope.mostrar;
+			}
+		})
+	</script>
+
+</head>
+<body ng-controller="MeuController">
+	<div class="container"> 
+		<h1>Hello <span ng-blind="pessoa[0].nome"></span><br>
+		Seu e-mail é: {{pessoa.email}}</h1>
+		<input type="text" ng-model="pessoa[0].nome" class="form-control" placeholder="insira seu nome"> <br>
+		<input type="text" ng-model="pessoa[0].email" class="form-control" placeholder="insira seu email"> <br>
+		<button class="btn" btn-primary ng-click="pessoa.nome= 'CLeiton';objeto=pessoa">Mudar para Cleiton</button>
+		<button class="btn btn-danger" ng-click="mostrarFn()">Mostrar/Esconder</button>
+	</div>
+	<pre ng-if="mostrar">{{msg}}</pre>
+
+
+
+
+</body>
+</html>
